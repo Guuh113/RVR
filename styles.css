@@ -7,3 +7,17 @@
 
 /* Logo without a surrounding panel. */
 .brand-logo{background-color:transparent;border:0;border-radius:0}.about-mark{background:transparent}.footer-mark .brand-logo{border:0}
+
+/* Light blue surfaces improve contrast with the original navy logo. */
+:root{--bg:#e8effa;--panel:#f7faff;--line:#bccde5;--blue:#2747d9;--text:#101c3c;--muted:#465a77;color-scheme:light}
+body{background:linear-gradient(160deg,#f1f5fc,#dce8f9 52%,#eaf1fc)}
+.brand-header{background:rgba(232,239,250,.96);border-bottom-color:#c3d2e9}
+.eyebrow,.product-index{color:#3456a0}
+.about{background:#e1eaf8}
+.product-card{border-color:#b8cae5;box-shadow:0 10px 28px #1635650c}
+.button.primary{color:#fff;box-shadow:0 8px 24px #2747d922}
+.expand-button{background:#e8effd;color:#183384}
+.expand-content{background:#e9f0fc;border-color:#c1d1e9}
+.benefit{background:#f0f5fd}
+footer{background:#e1eaf8;border-top-color:#bccde5}
+.choose-button:focus-visible,.expand-button:focus-visible{outline-color:#101c3c}
