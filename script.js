@@ -1,24 +1,2 @@
-(() => {
-  const header = document.querySelector('.brand-header');
-  const brand = document.querySelector('.brand');
-  let frame = 0;
-  function refreshLogo() {
-    frame = 0;
-    const progress = Math.min(window.scrollY / 370, 1);
-    const isMobile = window.matchMedia('(max-width:750px)').matches;
-    header.style.height = `${(isMobile ? 210 : 150) - progress * (isMobile ? 124 : 62)}px`;
-    brand.style.setProperty('--logo-scale', String(1 - progress * (isMobile ? .58 : .43)));
-  }
-  window.addEventListener('scroll', () => { if (!frame) frame = requestAnimationFrame(refreshLogo); }, {passive:true});
-  window.addEventListener('resize', refreshLogo);
-  refreshLogo();
-  document.querySelectorAll('.expand-button').forEach(button => {
-    button.addEventListener('click', () => {
-      const expanded = button.getAttribute('aria-expanded') === 'true';
-      button.setAttribute('aria-expanded', String(!expanded));
-      button.firstChild.textContent = expanded ? 'Ver mais ' : 'Ver menos ';
-      document.getElementById(button.getAttribute('aria-controls')).hidden = expanded;
-    });
-  });
-  document.getElementById('year').textContent = new Date().getFullYear();
-})();
+document.querySelectorAll('.more').forEach(button=>button.addEventListener('click',()=>{const expanded=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded',String(!expanded));button.textContent=expanded?'Ver mais':'Ver menos';document.getElementById(button.getAttribute('aria-controls')).hidden=expanded;}));
+const track=document.querySelector('.review-track');const dots=[...document.querySelectorAll('.dots button')];dots.forEach((dot,i)=>dot.addEventListener('click',()=>{track.scrollTo({left:track.children[i].offsetLeft-track.children[0].offsetLeft,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});}));track.addEventListener('scroll',()=>{const step=track.children[1].offsetLeft-track.children[0].offsetLeft;const index=Math.round(track.scrollLeft/step);dots.forEach((dot,i)=>dot.setAttribute('aria-pressed',String(i===index)));},{passive:true});
